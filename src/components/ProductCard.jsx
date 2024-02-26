@@ -7,6 +7,8 @@ import useValidateLogin from "../hooks/useValidateToken";
 
 const ProductCard = ({ product }) => {
 
+  console.log(product);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { validateLogin } = useValidateLogin();
@@ -22,7 +24,7 @@ const ProductCard = ({ product }) => {
     <Card className="product-card" onClick={() => navigate(`/products/${product.id}`)}>
       <Card.Img
         variant="top"
-        // src={product.images[0]?.url}
+        src={product.productImgs[0]?.url}
         className="product-image"
       />
       <Card.Body>

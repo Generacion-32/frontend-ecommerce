@@ -23,11 +23,11 @@ const ProductDetail = () => {
       setProduct(res.data);
       dispatch(filterByCategoryThunk(res.data?.category.id));
     }));
-    window.scrollTo({top: 0, behavior: "smooth"})
+    window.scrollTo({ top: 0, behavior: "smooth" })
   }, [dispatch, id]);
 
   const addToCart = () => {
-    dispatch(addProductCart({quantity, productId: product.id}));
+    dispatch(addProductCart({ quantity, productId: product.id }));
   }
 
   if (!product) return <>Loading...</>
@@ -36,8 +36,8 @@ const ProductDetail = () => {
     <section>
       <Row>
         <Col lg={5} className="pe-5">
-          <Carousel style={{background: "#fff", borderRadius: "20px"}} interval={null} variant="dark">
-            {product.images?.map(image => (
+          <Carousel style={{ background: "#fff", borderRadius: "20px" }} interval={null} variant="dark">
+            {product.productImgs?.map(image => (
               <Carousel.Item key={image.id}>
                 <img
                   className="d-block w-100 mb-5"
@@ -71,9 +71,9 @@ const ProductDetail = () => {
               <span className="text-light text-muted">
                 Quantity
               </span>
-              <Counter 
-                value={quantity} 
-                setValue={setQuantity} 
+              <Counter
+                value={quantity}
+                setValue={setQuantity}
               />
             </Col>
             <Button
@@ -93,7 +93,7 @@ const ProductDetail = () => {
           </Row>
         </Col>
         <h3 className="mt-5">Discover similar items</h3>
-        <Row xs={1} sm={2} lg={3} xl={4}  className="g-4">
+        <Row xs={1} sm={2} lg={3} xl={4} className="g-4">
           {relatedProducts.map(product => (
             <Col key={product.id}>
               <ProductCard product={product} />

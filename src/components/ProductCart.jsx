@@ -16,7 +16,7 @@ const ProductCart = ({ product, index }) => {
 
     useEffect(() => {
         axios().put(`/cart/${product.id}`, { quantity })
-            .then(() => dispatch(updateQuantity({quantity, index})))
+            .then(() => dispatch(updateQuantity({ quantity, index })))
     }, [product.id, quantity, dispatch, index]);
 
     const navigateToProduct = () => {
@@ -30,31 +30,31 @@ const ProductCart = ({ product, index }) => {
 
     return (
         <>
-        <div className='product-cart'>
-            <img src={product.product?.images?.[0]?.url} alt="" />
-            <div className="details">
-                <h5 onClick={navigateToProduct}>
-                    {product.product?.title}
-                </h5>
-                <Counter
-                    value={quantity}
-                    setValue={setQuantity}
-                    size="sm"
-                />
-                <div className="total">
-                    <span className="text-muted me-1">total: </span>
-                    <span className="text-success">${total}</span>
+            <div className='product-cart'>
+                <img src={product.product?.productImgs?.[0]?.url} alt="" />
+                <div className="details">
+                    <h5 onClick={navigateToProduct}>
+                        {product.product?.title}
+                    </h5>
+                    <Counter
+                        value={quantity}
+                        setValue={setQuantity}
+                        size="sm"
+                    />
+                    <div className="total">
+                        <span className="text-muted me-1">total: </span>
+                        <span className="text-success">${total}</span>
+                    </div>
                 </div>
+                <span
+                    className="material-symbols-outlined text-danger"
+                    style={{ cursor: "pointer" }}
+                    onClick={deleteProduct}
+                >
+                    delete
+                </span>
             </div>
-            <span 
-                className="material-symbols-outlined text-danger"
-                style={{cursor: "pointer"}}
-                onClick={deleteProduct}
-            >
-                delete
-            </span>
-        </div>
-        <hr />
+            <hr />
         </>
     )
 }

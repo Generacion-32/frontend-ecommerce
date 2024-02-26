@@ -42,16 +42,16 @@ const Purchases = () => {
           {purchases.map(purchase => (
             <tr key={purchase.id}>
               <td>
-                <img 
-                  src={purchase.product?.images?.[0]?.url} 
-                  alt="" 
-                  style={{width: "100px", padding: " 10px", background: "#fff"}}
+                <img
+                  src={purchase.product?.productImgs?.[0]?.url}
+                  alt=""
+                  style={{ width: "100px", padding: " 10px", background: "#fff" }}
                 />
               </td>
               <td>
                 <b
                   onClick={() => navigateToProduct(purchase.product?.id)}
-                  style={{cursor: "pointer"}}
+                  style={{ cursor: "pointer" }}
                 >
                   {purchase.product?.title}
                 </b>
